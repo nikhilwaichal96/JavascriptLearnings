@@ -14,7 +14,7 @@
  * But in Strict mode it is set as undefined
  * 
  * Why call bind apply are required?
- * We cant use normal function  invocation because it will always be treated as window object.
+ * We cant use normal function  invocation because variable inside it will always be treated as window object or undefined.
  * 
  * 
  * What is the difference between Call, Apply and Bind?
