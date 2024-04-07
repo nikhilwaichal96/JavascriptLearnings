@@ -62,5 +62,5 @@ let person = {
 
 console.log(typeof(person))
 
-let z = null
+let z = ""
 console.log(typeof(z))
