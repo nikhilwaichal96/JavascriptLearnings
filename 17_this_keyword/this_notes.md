@@ -51,16 +51,8 @@ function myFunction() {
   function myFunction() {
     return this;  //undefined
   }
-  ```
 
-
-  ## this usags with call and apply explicit binding
-The call() and apply() methods are predefined JavaScript methods.
-
-They can both be used to call an object method with another object as argument.
-
-```javascript
-//################## Named Function context #########################
+  //################## Named Function context #########################
   function greet() {
     console.log(this.name); //this is refered as object which owns greet function
 }
@@ -71,7 +63,15 @@ const person = {
 };
 
 person.sayHello(); // Outputs: John
+  ```
 
+
+  ## this usags with call and apply explicit binding
+The call() and apply() methods are predefined JavaScript methods.
+
+They can both be used to call an object method with another object as argument.
+
+```javascript
 //########### Explicit Function Binding ##############
 const person1 = {
   fullName: function() {
@@ -95,7 +95,7 @@ const fullNameOfMember = person1.fullName.bind(member)
 console.log("This usages in bind method ",fullNameOfMember()); //bind method
 ```
 
-## function borrowing with Bind
+## function Constructor
  When a function is used as a constructor with the new keyword, this refers to the newly created object.
  ```javascript
  function Person(name) {
@@ -106,7 +106,7 @@ const john = new Person('John');
 console.log(john.name); // Outputs: John
  ```
 
-### this is arrow function
+## this is arrow function
 Arrow Functions: Arrow functions do not have their own this binding. Instead, they lexically capture the this value of the enclosing context.
 ```
 let obj = {
