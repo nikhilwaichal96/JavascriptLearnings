@@ -10,6 +10,8 @@
  * we can borrow method from other object 
  * we can use a common generic method with different object
  * 
+ * Call and Apply can both be used to call an object method with another object as argument.
+ * 
  * By default this  keyword inside the function refers to the global object.
  * But in Strict mode it is set as undefined
  * 
@@ -43,10 +45,12 @@ invite.call(employee1, "Hello", "How are you?"); // Hello John Rodson, How are y
 invite.call(employee2, "Hello", "How are you?"); // Hello Jimmy Baily, How are you?
 
 invite.apply(employee1, ["Hello", "How are you?"]); // Hello John Rodson, How are you?
-invite.apply(employee2, ["Hello", "How are you?"]); // Hello Jimmy Baily, How are you?var inviteEmployee1 = invite.bind(employee1);
+invite.apply(employee2, ["Hello", "How are you?"]); // Hello Jimmy Baily, How are you?var 
 
 
-var inviteEmployee2 = invite.bind(employee2);
+let inviteEmployee1 = invite.bind(employee1);
+
+let  inviteEmployee2 = invite.bind(employee2);
 inviteEmployee1("Hello", "How are you?"); // Hello John Rodson, How are you?
 inviteEmployee2("Hello", "How are you?"); // Hello Jimmy Baily, How are you?
 
