@@ -203,3 +203,54 @@ Asynchronous operations, such as fetching data from a server, reading files, or 
   3. If the call stack is empty and there are callbacks in the queue, the event loop moves the first callback from the queue to the call stack for execution.
   4. This process ensures that JavaScript remains non-blocking and responsive, as it allows the main thread to handle other tasks while waiting for asynchronous operations to complete.
 
+## What is callback hell or pyramid of doom
+Callback hell, also known as the pyramid of doom, refers to a situation in JavaScript programming where code becomes difficult to read and maintain due to excessive nesting of callback functions, especially in asynchronous code.
+
+This occurs when multiple asynchronous operations are chained together, leading to deeply nested callbacks within one another
+
+Like this:
+```
+asyncFunction1(function(response1) {
+    asyncFunction2(response1, function(response2) {
+        asyncFunction3(response2, function(response3) {
+            asyncFunction4(response3, function(response4) {
+                // More nested callbacks...
+            });
+        });
+    });
+});
+```
+Each callback function depends on the result of the previous one, leading to a pyramid-like structure of nested callbacks. This makes the code difficult to read, understand, and maintain, often resulting in what's known as "**callback hell**".
+
+### Callback hell can lead to several issues:
+**Readability:** Deeply nested callbacks make the code harder to read and comprehend, especially as the number of nested levels increases.
+**Maintainability:** Code that is difficult to read is also difficult to maintain. Making changes or debugging becomes challenging, increasing the likelihood of introducing errors.
+**Error handling:** Error handling becomes more complex as errors need to be handled at each level of nesting, leading to verbose and error-prone code.
+
+In summary, callback hell is generally considered bad practice in JavaScript programming because it makes code difficult to read, maintain, and debug. It can lead to a variety of issues and should be avoided by employing cleaner, more modular approaches to asynchronous programming.
+
+To mitigate callback hell, several approaches have been developed, such as using named functions instead of anonymous functions, modularizing code with promises or async/await,
+
+```javascript
+function download(url, callback) {
+  setTimeout(() => {
+    console.log(`Downloading ${url} ...`);
+    callback(url);
+  }, 1000);
+}
+
+const url1 = 'https://www.javascripttutorial.net/pic1.jpg';
+const url2 = 'https://www.javascripttutorial.net/pic2.jpg';
+const url3 = 'https://www.javascripttutorial.net/pic3.jpg';
+
+download(url1, function (url) {
+  console.log(`Processing ${url}`);
+  download(url2, function (url) {
+    console.log(`Processing ${url}`);
+    download(url3, function (url) {
+      console.log(`Processing ${url}`);
+    });
+  });
+});
+
+```
