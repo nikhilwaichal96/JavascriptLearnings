@@ -178,3 +178,28 @@ function isOdd(number) {
   console.log("Arrow Function Callback",evenNumbers)
 ```
 # Asynchrounous callbacks
+
+An asynchronous callback in JavaScript refers to a function that is passed as an argument to another function and is executed asynchronously, meaning it will run at a later time or after some asynchronous operation has completed.
+
+Asynchronous operations, such as fetching data from a server, reading files, or waiting for user input, don't block the execution of JavaScript code. Instead, they execute in the background, and the rest of the code continues to run. When the asynchronous operation completes, it triggers the execution of the callback function.
+
+ Asynchronous callbacks allow JavaScript to perform tasks without waiting for them to complete. This non-blocking behavior is crucial for building responsive and efficient applications, especially in web development where interactions with servers and user input can introduce delays.
+
+ Asynchronous callbacks are commonly used to handle the results of asynchronous operations. Once the operation completes, the callback function is called with the result (or an error if the operation failed). This enables you to process the result or handle errors appropriately.
+
+ To handle asynchronous operations, functions often accept callback functions as arguments. These callbacks specify what should happen once the operation completes.
+
+ ## How javascript handles async code?
+
+ Javascript execute async code with callback queue and event looping
+ - ### callback queue 
+  1. When an asynchronous operation completes, its corresponding callback function is not immediately executed. Instead, it's placed in the callback queue.
+  2. The callback queue is a FIFO (First In, First Out) queue that holds callback functions waiting to be executed.
+  3. Each callback in the queue represents a task that needs to be processed by the JavaScript engine.
+   
+ - ### Event loop
+  1. The event loop is a critical component of the JavaScript runtime responsible for managing the execution of code, including handling asynchronous operations.
+  2. It continuously checks the call stack and the callback queue to determine which tasks should be executed next.
+  3. If the call stack is empty and there are callbacks in the queue, the event loop moves the first callback from the queue to the call stack for execution.
+  4. This process ensures that JavaScript remains non-blocking and responsive, as it allows the main thread to handle other tasks while waiting for asynchronous operations to complete.
+
