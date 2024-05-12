@@ -42,6 +42,8 @@ When this is used alone it is refered to global context (Window in browser and g
 When this is used in function, it is refered to global context (Window in browser and global in nodejs)
 
 ```javascript
+
+ //################## Named Function context #########################
 function myFunction() {
     return this; //refer to global object
   }
@@ -52,7 +54,7 @@ function myFunction() {
     return this;  //undefined
   }
 
-  //################## Named Function context #########################
+  //########### Implicit function binding #######################
   function greet() {
     console.log(this.name); //this is refered as object which owns greet function
 }
