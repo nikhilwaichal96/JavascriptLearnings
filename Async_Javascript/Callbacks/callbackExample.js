@@ -33,3 +33,76 @@ function fetchData(callback) {
     (url) => console.log(`Processing the picture ${url}`),
     (url) => console.log(`The '${url}' is not valid`)
   );
+
+  //Callback hell example2:
+  console.log("callback hell")
+  function getUser(userId, callback) {
+    console.log('Get user from the database.');
+    setTimeout(() => {
+        callback({
+            userId: userId,
+            username: 'john'
+        });
+    }, 1000);
+}
+
+function getServices(user, callback) {
+    console.log(`Get services of  ${user.username} from the API.`);
+    setTimeout(() => {
+        callback(['Email', 'VPN', 'CDN']);
+    }, 2 * 1000);
+}
+
+function getServiceCost(services, callback) {
+    console.log(`Calculate service costs of ${services}.`);
+    setTimeout(() => {
+        callback(services.length * 100);
+    }, 3 * 1000);
+}
+
+//Nested callback functions for async operations
+getUser(100, (user) => {
+  getServices(user, (services) => {
+      getServiceCost(services, (cost) => {
+          console.log(`The service cost is ${cost}`);
+      });
+  });
+});
+
+
+//promise chain to handle callback hell with grace
+console.log("Promise chain")
+function getUser(userId) {
+  return new Promise((resolve, reject) => {
+      console.log('Get user from the database.');
+      setTimeout(() => {
+          resolve({
+              userId: userId,
+              username: 'john'
+          });
+      }, 1000);
+  })
+}
+
+function getServices(user) {
+  return new Promise((resolve, reject) => {
+      console.log(`Get services of  ${user.username} from the API.`);
+      setTimeout(() => {
+          resolve(['Email', 'VPN', 'CDN']);
+      }, 2 * 1000);
+  });
+}
+
+function getServiceCost(services) {
+  return new Promise((resolve, reject) => {
+      console.log(`Calculate service costs of ${services}.`);
+      setTimeout(() => {
+          resolve(services.length * 100);
+      }, 3 * 1000);
+  });
+}
+//chain async calls
+getUser(100)
+    .then(getServices)
+    .then(getServiceCost)
+    .then(console.log);

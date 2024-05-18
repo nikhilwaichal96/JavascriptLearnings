@@ -25,16 +25,28 @@ function onRejected(error) {
 }
 
 const promise = getUsers();
+
+//With just promiseFullfill
+console.log("With just promiseFullfill")
+promise.then(onFulfilled);
+
+//With just fullfill and rejected
+console.log("With Fullfill and rejected")
 promise.then(onFulfilled, onRejected);
+
+//When just error need to be handled
+console.log("With error rejected")
+promise.then(undefined, onRejected);
 
 
 //To run code when promise is rejected
+console.log("With catch block")
 promise.catch(onRejected);
 
 
 
 
-  promise.then(onFulfilled, onRejected)
+  promise.then(onFulfilled)
   .catch(onRejected)
   .finally(() => {
     console.log("Executing finally method")
