@@ -1,7 +1,41 @@
 # Array methods
 ### Get Array length  : ArrayName.length
 
-
+- 1. **toString()** method returns string with values in array seperated by ,
+    doesnot modify orignal array
+    ```javascript
+    let myArr = [1,2,3]
+    console.log(myArr.toString()) "1,2,3"
+    ```
+- 2. **join(seperator):** joins element in array with specified seperator
+    doesnot modify orignal array
+    ```javascript
+    let myArr = [1,2,3]
+    myArr.join("") "123"
+    myArr.join("-") "1-2-3"
+    myArr.join("*") "1*2*3"
+    ```
+- 3. **reverse():** Reverese order of array elements in array
+   overwrites orignalArray
+   ```javascript
+   let myArr = [1,2,3]
+   console.log(myArr.reverse()) //[3, 2, 1]
+   ```
+ - 4. **isArray(array):**  returns true if given object is an array
+   ```javascript
+   let myArr = [1,2,3]
+    let myString = "A bc "
+    console.log(isArray(myArr))  //true
+    console.log(isArray(myString)) //false
+   ```
+   Pending Methods
+ - 5. entries() 
+ - 6. copywithin()
+ - 7. valueof
+ - 8. keys()
+ - 9. delete operator
+ - 10. flatMap
+ - 11. reduceRight
 ## 1. Add / Remove elements in array
 
 ### 1. Push: Add element at the end of Array
@@ -35,8 +69,9 @@
       // array is now [2, 3], shiftedElement is 1
 ```
 
-### 5. Array slice (Return new Array subset)
+### 5. Array slice (Return new Array subset) **Array.slice(start,end)**
  **slice**: Returns a shallow copy of a portion of an array into a new array object selected from start to end.
+ **Doesnot overwrite ** the orignal array
  - syntax slice(start, stop); both parameters are optional
  - If start is undefined it will start slicing from 0
  - The stop parameter, as its name implies, is a zero-based index at which to end extraction. The slice() method extracts up to **stop-1**. It means that the slice() method doesn’t include the element at the stop position in the new array. If you omit the stop parameter, the slice() method will use the **length of the array** for the stop parameter.
@@ -46,8 +81,9 @@
       let newArray2 = array.slice(1);// newArray2 is [2, 3, 4, 5]
       let newArray3 = array.slice(2, 5);// newArray3 is [3, 4, 5]
 ```
-### 6. Array splice (Delete/Inset/Rename)
+### 6. Array splice (Delete/Inset/Rename) **Array.splice(index,count,e1,e2,e3)**
 Used for insert/rename/delete element from array by refering position
+It **overwrites** orignal array.
 #### 1. Remove element
 To  delete elements in an array, you pass two arguments into the splice() method as follows:
 Array.splice(position,num);
