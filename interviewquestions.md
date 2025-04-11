@@ -15,43 +15,36 @@
 
 ## 🔽 Answers
 
-### <a name="q1"></a>❓ What is the difference between var, let, and const?
-
-- `var` is function-scoped and can be hoisted.
+### <a id="q1"></a>What is the difference between var, let, and const?
+- `var` is function-scoped and hoisted.
 - `let` and `const` are block-scoped.
 - `const` cannot be reassigned, while `let` can.
 
 ---
 
-### <a name="q2"></a>❓ Explain event delegation in JavaScript.
-
-Event delegation allows you to add a single event listener to a parent element instead of multiple listeners to individual child elements. The event bubbles up from the child to the parent.
-
----
-
-### <a name="q3"></a>❓ How does JavaScript's prototype chain work?
-
-Every object in JavaScript has a prototype. When you access a property or method, the engine looks up the chain of prototypes until it finds it or reaches `null`.
+### <a id="q2"></a>Explain event delegation in JavaScript.
+Event delegation allows you to add a single event listener to a parent element instead of individual child elements, leveraging event bubbling.
 
 ---
 
-### <a name="q4"></a>❓ What is a closure, and how is it used?
-
-A closure is a function that remembers its lexical scope even when it's executed outside of that scope. It allows functions to have "private" variables.
-
----
-
-### <a name="q5"></a>❓ Explain the concept of 'this' in JavaScript.
-
-`this` refers to the context in which a function is called:
-- In global scope, it's the `window` (browser) or `global` (Node.js).
-- In methods, it's the object the method belongs to.
-- Arrow functions don't bind `this`; they inherit it from the parent scope.
+### <a id="q3"></a>How does JavaScript's prototype chain work?
+JavaScript objects inherit properties and methods from their prototype. When accessing a property, the JS engine checks the object and walks up the prototype chain until it finds the property or reaches `null`.
 
 ---
 
-### <a name="q6"></a>❓ What is the event loop in JavaScript?
+### <a id="q4"></a>What is a closure, and how is it used?
+A closure is a function that captures variables from its lexical scope, even when called outside of that scope. It allows for private variables and function factories.
 
-The event loop is what allows JavaScript to be asynchronous. It processes the call stack and handles callbacks from the task queue after the stack is empty.
+---
+
+### <a id="q5"></a>Explain the concept of 'this' in JavaScript.
+- In the global context, `this` refers to the global object.
+- In object methods, it refers to the object.
+- In arrow functions, `this` is lexically bound to the enclosing scope.
+
+---
+
+### <a id="q6"></a>What is the event loop in JavaScript?
+The event loop is a concurrency model that handles asynchronous operations. It moves tasks from the event queue to the call stack when the stack is empty, enabling non-blocking behavior.
 
 ---
